@@ -34,7 +34,7 @@ def get_point_rect_in_another(corners1, corners2):
     for key, value in corners1.items() :
         if corners2["top_left"].x < value.x < corners2["bottom_right"].x and \
                 corners2["top_left"].y < value.y < corners2["bottom_right"].y:
-            point_list.append((key, value))
+            point_list.append(key)
     return point_list
 
 
