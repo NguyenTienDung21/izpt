@@ -1,5 +1,5 @@
 # define cases constant
-import rect_utils
+import ignoring_zone_process_technique.rect_utils as rect_utils
 from enum import Enum
 class Cases(Enum):
     CASE_ONE_CORNER_IN_IGNORING_ZONE = 0

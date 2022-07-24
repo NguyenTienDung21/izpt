@@ -1,11 +1,12 @@
-from cases import Cases, check_case
-import case_handler
-import rect_utils
+from ignoring_zone_process_technique.cases import Cases, check_case
+import ignoring_zone_process_technique.case_handler as  case_handler
+import ignoring_zone_process_technique.rect_utils as rect_utils
 
 
-def process_zones(rect, ignoring_zone, case):
+def process_zones(rect, ignoring_zone):
     corners_rect = rect_utils.extract_corners(rect)
     corners_ignoring_zone = rect_utils.extract_corners(ignoring_zone)
+    case = check_case(corners_rect,corners_ignoring_zone)
     if case == Cases.CASE_ONE_CORNER_IN_IGNORING_ZONE:
         return case_handler.one_corner_in_ignoring_zone_handler(corners_rect, corners_ignoring_zone)
     elif case == Cases.CASE_TWO_CORNERS_IN_IGNORING_ZONE:
@@ -20,12 +21,18 @@ def process_zones(rect, ignoring_zone, case):
         return case_handler.crossing_zone_handler(corners_rect, corners_ignoring_zone)
 
 
-def process_rect_with_ignoring_zones(rect, ignore_zones_list):
-    rect_corners = rect_utils.extract_corners(rect)
-    new_rect = rect
-    for zone in ignore_zones_list:
-        zone_corners = rect_utils.extract_corners(zone)
-        case = check_case(rect_corners, zone_corners)
-        new_rect = process_zones(new_rect, zone, case)
-    return new_rect
+def process_rect_list_with_ignoring_zone(rect_list, ignoring_zone):
+    new_rects = []
+    for rect in rect_list:
+        result =[rect_utils.convert_to_old_format_rect(item) for item in process_zones(rect, ignoring_zone)]
 
+        if result is not None and len(result) > 0 :
+            new_rects += result
+    return new_rects
+
+def process_rect_list_with_ignore_zone_list(rect_list, ignoring_zone_list):
+    new_rect_list = rect_list
+    for zone in ignoring_zone_list:
+        new_rect_list =  process_rect_list_with_ignoring_zone(new_rect_list, zone)
+
+    return new_rect_list

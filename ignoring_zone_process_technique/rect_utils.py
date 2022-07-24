@@ -1,4 +1,4 @@
-from points import  Points
+from ignoring_zone_process_technique.points import Points
 
 def validate_rect_params(rect1, rect2):
     if rect1 is None or len(rect1) == 0 :
@@ -42,10 +42,15 @@ def get_intersect_rect(corners1, corners2):
     x_top_left = max(corners1["top_left"].x, corners2["top_left"].x)
     y_top_left = max(corners1["top_left"].y, corners2["top_left"].y)
     x_bottom_right = min(corners1["bottom_right"].x, corners2["bottom_right"].x)
-    y_bottom_right = min(corners1["bottom_right"].y, corners2["bottom_right"]).y
+    y_bottom_right = min(corners1["bottom_right"].y, corners2["bottom_right"].y)
     return {
         "top_left": Points(x_top_left, y_top_left),
         "top_right": Points(x_bottom_right, y_top_left),
         "bottom_right": Points(x_bottom_right, y_bottom_right),
         "bottom_left": Points(x_top_left, y_bottom_right)
     }
+
+
+def convert_to_old_format_rect(corners):
+    print(corners)
+    return [corners["top_left"].x, corners["top_left"].y, corners["bottom_right"].x, corners["bottom_right"].y]
