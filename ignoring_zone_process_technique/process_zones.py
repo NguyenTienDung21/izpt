@@ -7,6 +7,7 @@ def process_zones(rect, ignoring_zone):
     corners_rect = rect_utils.extract_corners(rect)
     corners_ignoring_zone = rect_utils.extract_corners(ignoring_zone)
     case = check_case(corners_rect,corners_ignoring_zone)
+    print(case)
     if case == Cases.CASE_ONE_CORNER_IN_IGNORING_ZONE:
         return case_handler.one_corner_in_ignoring_zone_handler(corners_rect, corners_ignoring_zone)
     elif case == Cases.CASE_TWO_CORNERS_IN_IGNORING_ZONE:

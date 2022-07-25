@@ -23,5 +23,5 @@ def check_case(rect_corners, ignore_zone_corners):
         return Cases.CASE_TWO_IGNORE_CORNERS_IN_RECT
     elif len(point_in_rect) == 4:
         return Cases.CASE_FOUR_IGNORE_CORNERS_IN_RECT
-    elif len(point_in_rect) == 0 and len(point_in_ignore)==0:
+    elif len(point_in_rect) == 0 and len(point_in_ignore) == 0:
         return Cases.CASE_CROSS_ZONES

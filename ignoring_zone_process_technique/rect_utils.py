@@ -32,8 +32,8 @@ def check_intersect_by_corners(corners1, corners2):
 def get_point_rect_in_another(corners1, corners2):
     point_list = []
     for key, value in corners1.items() :
-        if corners2["top_left"].x < value.x < corners2["bottom_right"].x and \
-                corners2["top_left"].y < value.y < corners2["bottom_right"].y:
+        if corners2["top_left"].x <= value.x <= corners2["bottom_right"].x and \
+                corners2["top_left"].y <= value.y <= corners2["bottom_right"].y:
             point_list.append(key)
     return point_list
 

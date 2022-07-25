@@ -28,7 +28,7 @@ def __one_corner_top_right_handler(rect_corners, intersect_rect):
         "bottom_left" : Points(rect_corners["top_left"].x, intersect_rect["bottom_left"].y)
     }
     second_rectangle_corners = {
-        "top_left": first_rectangle_corners["bottom_right"],
+        "top_left": first_rectangle_corners["bottom_left"],
         "top_right": intersect_rect["bottom_right"],
         "bottom_right": rect_corners["bottom_right"],
         "bottom_left": rect_corners["bottom_left"]
@@ -44,7 +44,7 @@ def __one_corner_bottom_right_handler(rect_corners, intersect_rect):
         "bottom_left": Points(rect_corners["top_left"].x, intersect_rect["top_left"].y)
     }
     second_rectangle_corners = {
-        "top_left": first_rectangle_corners["bottom_right"],
+        "top_left": first_rectangle_corners["bottom_left"],
         "top_right": intersect_rect["top_left"],
         "bottom_right": intersect_rect["bottom_left"],
         "bottom_left": rect_corners["bottom_left"]
@@ -77,11 +77,11 @@ def one_corner_in_ignoring_zone_handler(rect_corners, ignoring_zone_corners):
     if corner_type == "top_left":
         return __one_corner_top_left_handler(rect_corners, intersect_rect)
     elif corner_type == "bottom_right":
-        return __one_corner_top_right_handler(rect_corners, intersect_rect)
+        return __one_corner_bottom_right_handler(rect_corners, intersect_rect)
     elif corner_type == "bottom_left":
         return __one_corner_bottom_left_handler(rect_corners, intersect_rect)
     elif corner_type == "top_right":
-        return __one_corner_bottom_right_handler(rect_corners, intersect_rect)
+        return __one_corner_top_right_handler(rect_corners, intersect_rect)
 
 
 def __two_corner_top_handler(rect_corners, intersect_rect):
