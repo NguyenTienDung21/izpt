@@ -18,7 +18,7 @@ def test_process_zone(sample_rect, blank_image):
     ]
     result = process_rect_list_with_ignore_zone_list([sample_rect], ignoring_zones_list)
     blank_image = draw_rects(blank_image, ignoring_zones_list, result, sample_rect)
-    cv2.imwrite("result.jpg",blank_image)
+    cv2.imwrite("tests/result.jpg",blank_image)
 
 
 def test_process_zone_top_left(sample_rect, blank_image):
@@ -27,7 +27,7 @@ def test_process_zone_top_left(sample_rect, blank_image):
     ]
     result = process_rect_list_with_ignore_zone_list([sample_rect], ignoring_zones_list)
     blank_image = draw_rects(blank_image, ignoring_zones_list, result, sample_rect)
-    cv2.imwrite("result_top_left.jpg",blank_image)
+    cv2.imwrite("tests/result_top_left.jpg",blank_image)
 
 
 def test_process_zone_top_right(sample_rect, blank_image):
@@ -36,7 +36,7 @@ def test_process_zone_top_right(sample_rect, blank_image):
     ]
     result = process_rect_list_with_ignore_zone_list([sample_rect], ignoring_zones_list)
     blank_image = draw_rects(blank_image, ignoring_zones_list, result, sample_rect)
-    cv2.imwrite("result_top_right.jpg",blank_image)
+    cv2.imwrite("tests/result_top_right.jpg",blank_image)
 
 
 def test_two_corner_rect_top(sample_rect_vertical, blank_image):
@@ -45,7 +45,7 @@ def test_two_corner_rect_top(sample_rect_vertical, blank_image):
     ]
     result = process_rect_list_with_ignore_zone_list([sample_rect_vertical], ignoring_zones_list)
     blank_image = draw_rects(blank_image, ignoring_zones_list, result, sample_rect_vertical)
-    cv2.imwrite("result_two_corners_rect_top.jpg",blank_image)
+    cv2.imwrite("tests/result_two_corners_rect_top.jpg",blank_image)
 
 
 def test_two_corner_rect_bottom(sample_rect_vertical, blank_image):
@@ -54,7 +54,7 @@ def test_two_corner_rect_bottom(sample_rect_vertical, blank_image):
     ]
     result = process_rect_list_with_ignore_zone_list([sample_rect_vertical], ignoring_zones_list)
     blank_image = draw_rects(blank_image, ignoring_zones_list, result, sample_rect_vertical)
-    cv2.imwrite("result_two_corners_rect_bottom.jpg",blank_image)
+    cv2.imwrite("tests/result_two_corners_rect_bottom.jpg",blank_image)
 
 
 def test_two_corner_rect_left(sample_rect_horizontal, blank_image):
@@ -63,7 +63,7 @@ def test_two_corner_rect_left(sample_rect_horizontal, blank_image):
     ]
     result = process_rect_list_with_ignore_zone_list([sample_rect_horizontal], ignoring_zones_list)
     blank_image = draw_rects(blank_image, ignoring_zones_list, result, sample_rect_horizontal)
-    cv2.imwrite("result_two_corners_rect_left.jpg",blank_image)
+    cv2.imwrite("test/result_two_corners_rect_left.jpg",blank_image)
 
 
 def test_two_corner_rect_right(sample_rect_horizontal, blank_image):
@@ -72,7 +72,7 @@ def test_two_corner_rect_right(sample_rect_horizontal, blank_image):
     ]
     result = process_rect_list_with_ignore_zone_list([sample_rect_horizontal], ignoring_zones_list)
     blank_image = draw_rects(blank_image, ignoring_zones_list, result, sample_rect_horizontal)
-    cv2.imwrite("result_two_corners_rect_right.jpg",blank_image)
+    cv2.imwrite("test/result_two_corners_rect_right.jpg",blank_image)
 
 
 def test_process_zone_bottom_right(sample_rect, blank_image):
@@ -81,7 +81,7 @@ def test_process_zone_bottom_right(sample_rect, blank_image):
     ]
     result = process_rect_list_with_ignore_zone_list([sample_rect], ignoring_zones_list)
     blank_image = draw_rects(blank_image, ignoring_zones_list, result, sample_rect)
-    cv2.imwrite("result_bottom_right.jpg",blank_image)
+    cv2.imwrite("test/result_bottom_right.jpg",blank_image)
 
 def test_process_zone_cross(sample_rect_vertical, blank_image):
     ignoring_zones_list = [
@@ -90,7 +90,7 @@ def test_process_zone_cross(sample_rect_vertical, blank_image):
     ]
     result = process_rect_list_with_ignore_zone_list([sample_rect_vertical], ignoring_zones_list)
     blank_image = draw_rects(blank_image, ignoring_zones_list, result, sample_rect_vertical)
-    cv2.imwrite("result_zone_cross.jpg",blank_image)
+    cv2.imwrite("tests/result_zone_cross.jpg",blank_image)
 
 def test_process_ignoring_zone_in_rect(sample_rect,blank_image):
     ignoring_zones_list = [
@@ -98,13 +98,33 @@ def test_process_ignoring_zone_in_rect(sample_rect,blank_image):
     ]
     result = process_rect_list_with_ignore_zone_list([sample_rect], ignoring_zones_list)
     blank_image = draw_rects(blank_image, ignoring_zones_list, result, sample_rect)
-    cv2.imwrite("result_zone_in_rect.jpg", blank_image)
+    cv2.imwrite("tests/result_zone_in_rect.jpg", blank_image)
 
 
-def test_process_2_corner_ignoring_zone_in_rect(sample_rect, blank_image):
+def test_process_2_corner_ignoring_zone_left_in_rect(sample_rect, blank_image):
     ignoring_zones_list = [
-        [200,600, 500,800]
+        [200,600, 500,700]
     ]
     result = process_rect_list_with_ignore_zone_list([sample_rect], ignoring_zones_list)
     blank_image = draw_rects(blank_image, ignoring_zones_list, result, sample_rect)
-    cv2.imwrite("result_2_zone_in_rect.jpg", blank_image)
+    cv2.imwrite("tests/result_2_zone_in_rect_left.jpg", blank_image)
+
+
+def test_process_2_corner_ignoring_zone_right_in_rect(sample_rect, blank_image):
+    ignoring_zones_list = [
+        [600,600, 900,700]
+    ]
+    result = process_rect_list_with_ignore_zone_list([sample_rect], ignoring_zones_list)
+    blank_image = draw_rects(blank_image, ignoring_zones_list, result, sample_rect)
+    cv2.imwrite("tests/result_2_zone_in_rect_right.jpg", blank_image)
+
+
+def test_process_2_corner_ignoring_zone_bottom_in_rect(sample_rect, blank_image):
+    ignoring_zones_list = [
+        [600,600, 700,900]
+    ]
+    result = process_rect_list_with_ignore_zone_list([sample_rect], ignoring_zones_list)
+    blank_image = draw_rects(blank_image, ignoring_zones_list, result, sample_rect)
+    cv2.imwrite("tests/result_2_zone_in_rect_bottom.jpg", blank_image)
+
+
